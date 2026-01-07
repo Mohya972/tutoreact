@@ -2,14 +2,22 @@ import { useState } from 'react';
 
 function App() {
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(new FormData(event.target));
+  const [value, setValue] = useState('')
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+    e.preventDefault();
   }
 
-  return <form onSubmit={handleSubmit}>
-            <input type="text" name="Firstname" defaultValue="Your Firstname"/>
-            <button>Envoyer</button>
+  const [checked, setChecked] = useState(true);
+  const toggleCheck = () => {
+    setChecked(!checked);
+  }
+
+  return <form>
+            <textarea value={value} onChange={handleChange} />
+            <input type="checkbox" checked={checked} onChange={toggleCheck} />
+            <button disabled={!checked}>Envoyer</button>
           </form>
 }
 
