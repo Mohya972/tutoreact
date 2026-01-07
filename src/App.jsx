@@ -2,31 +2,21 @@ import { useState } from 'react';
 
 function App() {
 
-  const [person, setPerson] = useState({
-    firstName: 'John',
-    lastName: 'Doe',
-    age: 18
-  });
+const [firstname, setFirstname] = useState('John Doe');
 
-  const [count, setCount] = useState(0);
+const handleChange = (e) => {
+  setFirstname(e.target.value);
+}
 
-  const incrementAge = () => {
-    setPerson({
-      ...person,
-      age: person.age + 1
-    });
-  }
+const reset = () => {
+  setFirstname('');
+}
 
-  const incrementCount = () => {
-    setCount(count + 1);
-  }
-
-  return <>
-            <p>Age de {person.firstName} {person.lastName}: {person.age}</p>
-            <button onClick={incrementAge}>Gagner une année</button>
-            <p>Compteur: {count}</p>
-            <button onClick={incrementCount}>Incrémenter</button>
-          </>
+  return <form>
+            <input type="text" name="Firstname" value={firstname} onChange={handleChange} />
+            <p>Your firstname is: {firstname}</p>
+            <button type="button" onClick={reset}>Reset</button>
+          </form>
 }
 
 export default App;
