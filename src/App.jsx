@@ -10,10 +10,7 @@ const todos = [
 function App() {
 
   return <>
-            {showTitle ? 
-              <h1 id="title" className="title" style={style}>{title}</h1> : 
-              <p>Démo</p>  
-            }  
+            <Title color="green"hidden> Mon composant </Title>
             <input type="text" placeholder="Me voiciii !!!" />
             
             <p> En plein tuto, ma fille souhaite que je la récupère. </p>
@@ -24,6 +21,13 @@ function App() {
               ))}
             </ul>
           </>
+}
+
+function Title({color , children, hidden}) {
+  if (hidden) {
+    return null;
+  }
+  return <h1 style={{ color: color }}>{children}</h1>
 }
 
 export default App;
